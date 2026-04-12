@@ -1,11 +1,15 @@
-import React from 'react';
+import Banner from "../../components/Shared/HomePageSection/Banner";
+import Stats from "../../components/Shared/HomePageSection/Stats";
+import TrendingApps from "../../components/Shared/HomePageSection/TrendingApps";
 
 const HomePage = () => {
-    return (
-        <div>
-            <h1 className='text-4xl text-red-500'>Home Page</h1>
-        </div>
-    );
+	return (
+		<>
+			<Banner></Banner>
+			<Stats></Stats>
+            <TrendingApps></TrendingApps>
+		</>
+	);
 };
 
 export default HomePage;
