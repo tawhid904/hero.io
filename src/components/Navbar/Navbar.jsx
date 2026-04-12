@@ -1,15 +1,16 @@
 import { FaGithub } from "react-icons/fa";
-import { NavLink } from "react-router";
 import Logo from "../../assets/images/logo.png";
+import MyNavLinks from "../Shared/MyNavLinks/MyNavLinks";
 
 const Navbar = () => {
+	/*  Way One
 	const navLinks = (
 		<>
 			<li>
 				<NavLink
 					to={"/"}
 					className={({ isActive }) =>
-						`font-medium ${isActive ? "underline text-indigo-500" : ""}`
+						`rounded-none p-0 pb-1 ${isActive ? "border-b border-indigo-500 text-indigo-500" : ""}`
 					}
 				>
 					Home
@@ -20,7 +21,7 @@ const Navbar = () => {
 				<NavLink
 					to={"/apps"}
 					className={({ isActive }) =>
-						`font-medium ${isActive && "underline text-indigo-500"}`
+						`rounded-none p-0 pb-1 ${isActive && "border-b border-indigo-500 text-indigo-500"}`
 					}
 				>
 					Apps
@@ -31,16 +32,30 @@ const Navbar = () => {
 				<NavLink
 					to={"/installed-apps"}
 					className={({ isActive }) =>
-						isActive
-							? "underline font-medium text-indigo-500"
-							: "font-medium"
+						`rounded-none p-0 pb-1 ${isActive && "border-b border-indigo-500 text-indigo-500"}`
 					}
 				>
 					Installation
 				</NavLink>
 			</li>
 		</>
-	);
+	); */
+
+	// Way Two
+	const navItems = [
+		{
+			path: "/",
+			name: "Home",
+		},
+		{
+			path: "/apps",
+			name: "Apps",
+		},
+		{
+			path: "/installed-apps",
+			name: "Installation",
+		},
+	];
 
 	return (
 		<nav className="bg-zinc-200">
@@ -70,22 +85,61 @@ const Navbar = () => {
 						</div>
 						<ul
 							tabIndex="-1"
-							className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+							className="menu-sm dropdown-content bg-base-300 p-2"
 						>
-							{navLinks}
+							<li>
+								<MyNavLinks to={"/"}>Home</MyNavLinks>
+							</li>
+							<li>
+								<MyNavLinks
+									to={"/apps"}
+									className={"text-red-600"}
+								>
+									Apps
+								</MyNavLinks>
+							</li>
+							<li>
+								<MyNavLinks to={"/installed-apps"}>
+									Installation
+								</MyNavLinks>
+							</li>
 						</ul>
 					</div>
 
-					<img
-						src={Logo}
-						width={50}
-						height={50}
-						alt="hero.io app logo"
-					/>
+					<div className="flex items-center gap-2">
+						<img
+							src={Logo}
+							width={50}
+							height={50}
+							alt="hero.io app logo"
+						/>
+						<h2 className="text-indigo-500 font-medium">HERO.IO</h2>
+					</div>
 				</div>
 
 				<div className="navbar-center hidden lg:flex">
-					<ul className="menu menu-horizontal px-1">{navLinks}</ul>
+					<ul className="flex flex-row gap-3">
+						{navItems.map((item) => (
+							<MyNavLinks to={item.path}>{item.name}</MyNavLinks>
+						))}
+					</ul>
+
+					{/* Way 2
+					
+					<ul className="flex flex-row gap-3">
+						<li>
+							<MyNavLinks to={"/"}>Home</MyNavLinks>
+						</li>
+						<li>
+							<MyNavLinks to={"/apps"}>Apps</MyNavLinks>
+						</li>
+						<li>
+							<MyNavLinks to={"/installed-apps"}>
+								Installation
+							</MyNavLinks>
+						</li>
+					</ul>
+					*/}
 				</div>
 
 				<div className="navbar-end">
