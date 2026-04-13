@@ -3,10 +3,10 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import "./index.css";
 import RootLayout from "./layout/RootLayout.jsx";
+import AppsPage from "./pages/AppsPage/AppsPage.jsx";
 import ErrorPage from "./pages/Error/ErrorPage.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
-import AppsPage from "./pages/AppsPage/AppsPage.jsx";
-import InstalledPage from "./pages/InstallPage/InstallPage.jsx"
+import InstalledPage from "./pages/InstallPage/InstallPage.jsx";
 
 const router = createBrowserRouter([
 	{
@@ -16,15 +16,16 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				Component: HomePage,
+				// loader: () => fetch("/data.json"),
 			},
 			{
 				path: "/apps",
-				Component: AppsPage
+				Component: AppsPage,
 			},
 			{
 				path: "/installed-apps",
-				Component: InstalledPage
-			}
+				Component: InstalledPage,
+			},
 		],
 		errorElement: <ErrorPage></ErrorPage>,
 	},
@@ -32,6 +33,6 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<RouterProvider router={router}>{/* <App /> */}</RouterProvider>
+		<RouterProvider router={router}></RouterProvider>
 	</StrictMode>,
 );

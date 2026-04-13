@@ -58,7 +58,7 @@ const Navbar = () => {
 	];
 
 	return (
-		<nav className="bg-zinc-200">
+		<nav className="bg-zinc-100">
 			<div className="navbar container mx-auto lg:p-0">
 				<div className="navbar-start">
 					<div className="dropdown mr-3 lg:mr-0">
@@ -119,8 +119,10 @@ const Navbar = () => {
 
 				<div className="navbar-center hidden lg:flex">
 					<ul className="flex flex-row gap-3">
-						{navItems.map((item) => (
-							<MyNavLinks to={item.path}>{item.name}</MyNavLinks>
+						{navItems.map((item, index) => (
+							<MyNavLinks key={index} to={item.path}>
+								{item.name}
+							</MyNavLinks>
 						))}
 					</ul>
 
