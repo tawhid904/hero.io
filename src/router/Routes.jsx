@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import RootLayout from "../layout/RootLayout";
 import AppDetails from "../pages/AppDetails/AppDetails.jsx";
 import AppsPage from "../pages/AppsPage/AppsPage";
+import Dashboard from "../pages/Dashboard/Dashboard.jsx";
 import ErrorPage from "../pages/Error/ErrorPage.jsx";
 import HomePage from "../pages/HomePage/HomePage";
 import InstalledPage from "../pages/InstallPage/InstallPage.jsx";
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
 			{
 				path: "/installed-apps",
 				Component: InstalledPage,
+			},
+			{
+				path: "/dashboard",
+				Component: Dashboard,
 			},
 			{
 				path: "*",

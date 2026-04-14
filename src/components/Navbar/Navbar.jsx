@@ -55,6 +55,10 @@ const Navbar = () => {
 			path: "/installed-apps",
 			name: "Installation",
 		},
+		{
+			path: "/dashboard",
+			name: "Dashboard",
+		},
 	];
 
 	return (
