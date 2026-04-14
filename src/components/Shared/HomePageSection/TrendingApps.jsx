@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { ClipLoader } from "react-spinners";
 import AppCard from "../UI/Card/AppCard";
+import useAppsData from "../../../hooks/useAppsData";
 
 // const appsPromise = fetch("/data.json").then((res) => res.json());
 
@@ -12,21 +12,23 @@ const TrendingApps = () => {
 	// const appsData = useLoaderData();
 	// console.log("Apps data got using useLoaderData", appsData);
 
-	const [apps, setApps] = useState([]);
-	const [loading, setLoading] = useState(true);
+	// const [apps, setApps] = useState([]);
+	// const [loading, setLoading] = useState(true);
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const res = await fetch("/data.json");
-			const appsData = await res.json();
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 		const res = await fetch("/data.json");
+	// 		const appsData = await res.json();
 
-			setTimeout(() => {
-				setApps(appsData);
-				setLoading(false);
-			}, 2000);
-		};
-		fetchData();
-	}, []);
+	// 		setTimeout(() => {
+	// 			setApps(appsData);
+	// 			setLoading(false);
+	// 		}, 2000);
+	// 	};
+	// 	fetchData();
+	// }, []);
+
+	const { apps, loading } = useAppsData();
 
 	return (
 		<div className="">
@@ -50,7 +52,9 @@ const TrendingApps = () => {
 					))}
 					<div className="flex justify-center items-center md:col-end-3 lg:col-span-4 mt-3">
 						<Link to={"/apps"}>
-							<button className="btn bg-linear-to-r from-violet-600 to-violet-500 text-white">Show All</button>
+							<button className="btn bg-linear-to-r from-violet-600 to-violet-500 text-white">
+								Show All
+							</button>
 						</Link>
 					</div>
 				</div>

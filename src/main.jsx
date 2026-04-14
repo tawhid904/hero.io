@@ -1,38 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { RouterProvider } from "react-router";
+import InstalledAppsContetx from "./context/InstalledAppsContetx";
 import "./index.css";
-import RootLayout from "./layout/RootLayout.jsx";
-import AppsPage from "./pages/AppsPage/AppsPage.jsx";
-import ErrorPage from "./pages/Error/ErrorPage.jsx";
-import HomePage from "./pages/HomePage/HomePage.jsx";
-import InstalledPage from "./pages/InstallPage/InstallPage.jsx";
-
-const router = createBrowserRouter([
-	{
-		path: "/",
-		Component: RootLayout,
-		children: [
-			{
-				index: true,
-				Component: HomePage,
-				// loader: () => fetch("/data.json"),
-			},
-			{
-				path: "/apps",
-				Component: AppsPage,
-			},
-			{
-				path: "/installed-apps",
-				Component: InstalledPage,
-			},
-		],
-		errorElement: <ErrorPage></ErrorPage>,
-	},
-]);
+import { router } from "./router/Routes";
 
 createRoot(document.getElementById("root")).render(
 	<StrictMode>
-		<RouterProvider router={router}></RouterProvider>
+		<InstalledAppsContetx>
+			<RouterProvider router={router}></RouterProvider>
+		</InstalledAppsContetx>
 	</StrictMode>,
 );

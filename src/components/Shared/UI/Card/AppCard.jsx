@@ -1,10 +1,14 @@
 import { FaDownload, FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const AppCard = ({ app }) => {
-	const { title, image, downloads, ratingAvg } = app;
+	const { title, image, downloads, ratingAvg, id } = app;
 
 	return (
-		<div className="flex justify-center items-center flex-col rounded-md p-3 shadow-xl">
+		<Link
+			to={`/apps/${id}`}
+			className="flex justify-center items-center flex-col rounded-md p-3 shadow-xl"
+		>
 			<div className="p-5 bg-zinc-100 rounded-xl">
 				<img
 					src={image}
@@ -27,12 +31,14 @@ const AppCard = ({ app }) => {
 					</div>
 
 					<div className="flex items-center bg-orange-50 text-orange-400 p-2 rounded font-medium gap-2">
-                        <span><FaStar></FaStar></span>
+						<span>
+							<FaStar></FaStar>
+						</span>
 						<span>{ratingAvg}</span>
 					</div>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
 
