@@ -38,9 +38,9 @@ const Dashboard = () => {
 	return (
 		<div className="flex flex-col justify-center items-center py-10 space-y-5">
 			<h1 className="text-3xl bg-gray-200 p-2 rounded-xl text-center">
-				Installed & Uninstalled Apps Graph
+				Installed & Not Installed Apps Graph
 			</h1>
-            
+
 			<PieChart
 				style={{
 					width: "100%",

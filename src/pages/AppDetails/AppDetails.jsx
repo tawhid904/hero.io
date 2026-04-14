@@ -3,6 +3,14 @@ import { FaDownload, FaStar } from "react-icons/fa";
 import { Link, useParams } from "react-router";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
+import {
+	Bar,
+	BarChart,
+	ResponsiveContainer,
+	Tooltip,
+	XAxis,
+	YAxis,
+} from "recharts";
 import ReviewUpStar from "../../assets/images/review.png";
 import { InstalledAppContextProvider } from "../../context/InstalledAppsContextProvider";
 import useAppsData from "../../hooks/useAppsData";
@@ -52,6 +60,8 @@ const AppDetails = () => {
 		toast.success(`${title} Installed`);
 		setInstalledApps([...installedApps, clickedApp]);
 	};
+
+	const reversRating = [...ratings].reverse();
 
 	return (
 		<div className="bg-zinc-100 py-15 min-h-screen px-3 md:px-0">
@@ -121,7 +131,41 @@ const AppDetails = () => {
 				</div>
 
 				<div className="border-t py-6 border-zinc-400">
-					<h1>Total : {ratings.length}</h1>
+					<h1 className="text-2xl font-semibold">Ratings</h1>
+
+					<div className="w-full h-70 py-5">
+						<ResponsiveContainer>
+							<BarChart data={reversRating} layout="vertical">
+								<XAxis
+									dataKey="count"
+									type="number"
+									axisLine={false}
+									tickLine={false}
+									tick={{
+										fill: "#f97323",
+										fontSize: 14,
+										fontWeight: 500,
+									}}
+								/>
+
+								<YAxis
+									dataKey="name"
+									type="category"
+									axisLine={false}
+									tickLine={false}
+									tick={{
+										fill: "#f97323",
+										fontSize: 20,
+										fontWeight: 500,
+									}}
+								/>
+
+								<Bar dataKey="count" fill="#f97316" />
+
+								<Tooltip></Tooltip>
+							</BarChart>
+						</ResponsiveContainer>
+					</div>
 				</div>
 
 				<div className="border-t pt-6 border-zinc-400">
